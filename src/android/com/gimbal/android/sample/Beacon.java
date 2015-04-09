@@ -184,7 +184,7 @@ public class Beacon extends CordovaPlugin {
 		.setNegativeButton("No", new DialogInterface.OnClickListener() {
 		public void onClick(DialogInterface dialog, int id) {
 						dialog.cancel();
-		callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, 1));				
+						
 					}
 				});
 		AlertDialog alertDialog = alertDialogBuilder.create();
