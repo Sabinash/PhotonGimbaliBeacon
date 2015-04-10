@@ -128,7 +128,7 @@ public class Beacon extends CordovaPlugin {
 						if (placeName.equalsIgnoreCase("Reception") || placeName.equalsIgnoreCase("OnsiteReception")) {
 							if (onVisitStart == null) {
 								message = "Welcome to the Photon World 2015 Conference !!!";
-								displayMessageAlert(placeName, message,
+								displayMessageAlertForReception(placeName, message,
 										callbackContext);
 								displayNotificationAlert(message);
 								editor.putString("onVisitStart", "onVisitStart");
@@ -155,7 +155,7 @@ public class Beacon extends CordovaPlugin {
 						if (placeName.equalsIgnoreCase("Reception") || placeName.equalsIgnoreCase("OnsiteReception")) {
 							if (onVisitEnd == null) {
 								message = "Thank You for attending, See you next year!";
-								displayMessageAlert(placeName, message,
+								displayMessageAlertForReception(placeName, message,
 										callbackContext);
 								displayNotificationAlert(message);
 								editor.putString("onVisitEnd", "onVisitEnd");
@@ -189,6 +189,22 @@ public class Beacon extends CordovaPlugin {
 		AlertDialog alertDialog = alertDialogBuilder.create();
 		alertDialog.setCanceledOnTouchOutside(false);
 		alertDialog.show();
+	}
+	
+	private void displayMessageAlertForReception(String placeName,
+			String message, CallbackContext callbackContext) {
+		// TODO Auto-generated method stub
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(cordova.getActivity());
+		alertDialogBuilder.setTitle(placeName);
+		alertDialogBuilder.setMessage(message);
+		alertDialogBuilder.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+		public void onClick(DialogInterface dialog, int id) {
+			dialog.cancel();
+		}
+		});
+		AlertDialog alertDialog = alertDialogBuilder.create();
+		alertDialog.setCanceledOnTouchOutside(false);
+		alertDialog.show();	
 	}
 	
 	private void displayNotificationAlert(String message) {
